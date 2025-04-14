@@ -7,9 +7,7 @@ function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Add Workout', href: '/addworkout' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'ContactUs', href: '/contactus' }
+    { name: 'Add Workout', href: '/addworkout' }
   ];
 
   return (
