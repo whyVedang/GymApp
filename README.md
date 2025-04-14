@@ -1,5 +1,12 @@
 # GymApp
 
+Home Page
+![image](https://github.com/user-attachments/assets/aadbfc53-0d49-43ce-b497-ba0c13a8aac3)
+
+Add Workout
+![image](https://github.com/user-attachments/assets/63c2be77-4124-4755-8eac-074d64bd0e04)
+
+
 A full-stack MERN application for tracking workout progress with animated UI components, real-time updates, and seamless data management.
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -8,6 +15,7 @@ A full-stack MERN application for tracking workout progress with animated UI com
 ![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green)
 ![Node.js](https://img.shields.io/badge/Node.js-20-green)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4)
+
 
 ## ✨ Features
 
