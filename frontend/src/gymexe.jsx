@@ -6,8 +6,6 @@ function Gymexe() {
   const { workouts, dispatch } = useWorkoutContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Fixed delete function to receive workout ID as parameter
   const handleDelete = async (workoutId) => {
     try {
       const res = await fetch(`http://localhost:4000/workouts/${workoutId}`, {
@@ -25,7 +23,27 @@ function Gymexe() {
       setTimeout(() => setError(null), 2000);
     }
   };
-  // Refined Animation Variants
+  useEffect(() => {
+    const fetchWorkout = async () => {
+      try {
+        const res = await fetch('http://localhost:4000/workouts');
+        const data = await res.json();
+        console.log(data)
+        if (res.ok)
+          dispatch({ type: 'UPDATE_WORKOUT', payload: data });
+        else
+          throw new Error('Failed to fetch workouts');
+        console.log(workouts)
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchWorkout();
+  }, [dispatch]);
+
   const containerVariants = {
     hidden: {
       opacity: 0,
@@ -83,28 +101,7 @@ function Gymexe() {
     }
   };
 
-  useEffect(() => {
-    const fetchWorkout = async () => {
-      try {
-        const res = await fetch('http://localhost:4000/workouts');
-        const data = await res.json();
-        console.log(data)
-        if (res.ok)
-          dispatch({ type: 'UPDATE_WORKOUT', payload: data });
-        else
-          throw new Error('Failed to fetch workouts');
-        console.log(workouts)
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
 
-    fetchWorkout();
-  }, [dispatch]);
-
-  // Premium Loading Component
   const LoadingComponent = () => (
     <motion.div
       initial={{ opacity: 0 }}
@@ -151,7 +148,6 @@ function Gymexe() {
     </motion.div>
   );
 
-  // Premium Error Component
   const ErrorComponent = () => (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
